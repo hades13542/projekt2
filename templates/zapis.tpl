@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <td>
-                <button class="submit" onclick="wyslij()"/>Wyślij dane</button>
+                <button class="submit" onclick="wyslij()">Wyślij dane</button>
             </td>
         </tr>
     </table>

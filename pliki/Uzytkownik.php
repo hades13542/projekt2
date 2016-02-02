@@ -1,50 +1,56 @@
 <?php
 
-include ('BazaDanych.php');
+include('BazaDanych.php');
 
-class Uzytkownik {
-        private $ident = '' ;
-        private $auth = false ;
-		private $s_user,  $s_pass ;
+class Uzytkownik
+{
+    private $ident = '';
+    private $auth = false;
+    private $s_user, $s_pass;
 
 
-        function __construct () {
-               
-				$this->s_user = '' ;
-                $this->s_pass = '' ;
-                $this->ident='' ;
-                session_start() ;
+    function __construct()
+    {
+
+        $this->s_user = '';
+        $this->s_pass = '';
+        $this->ident = '';
+        session_start();
+    }
+
+    function ustawSesje()
+    {
+        if ($this->auth == true) {
+            $_SESSION["ident"] = $this->ident;
+            session_set_cookie_params(360, "/", "fis.agh.edu.pl/3hujdus", true, false);
         }
+        return $this->auth;
+    }
 
-        function ustawSesje () {
-                if ($this->auth==true){
-                        $_SESSION["ident"] = $this->ident ;
-                        session_set_cookie_params(360, "/", "fis.agh.edu.pl/3puscizna", true, false) ;
-                }
-                return $this->auth;
+    function usunSesje()
+    {
+        if (isset($_SESSION['ident'])) {
+            $_SESSION = array();
+            if (isset($_COOKIE[session_name()])) {
+                setcookie(session_name(), '', time() - 50000, '/');
+            }
+            session_destroy();
         }
+    }
 
-        function usunSesje() {
-                if(isset($_SESSION['ident'])){
-                        $_SESSION = array() ;
-                        if ( isset($_COOKIE[session_name()]) ) {
-                                setcookie( session_name(),  '',  time()-50000,  '/') ;
-						}
-                        session_destroy();
-                }
-        }
-
-        function logowanie ( $user,  $pass ) {
-                $this->ident=$user ;
-                $dbH=new BazaDanych($user, 0);
-				$this->auth = $dbH->sprawdz($user,$pass);
-        }
+    function logowanie($user, $pass)
+    {
+        $this->ident = $user;
+        $dbH = new BazaDanych($user, 0);
+        $this->auth = $dbH->sprawdz($user, $pass);
+    }
 
 
-        function rejestracja($login,$pass,$pass2){
-                $dbH=new BazaDanych($user, 0);
-                return $dbH->dodaj($login,$pass,$pass2);
-        }
+    function rejestracja($login, $pass, $pass2)
+    {
+        $dbH = new BazaDanych($login, 0);
+        return $dbH->dodaj($login, $pass, $pass2);
+    }
 
 }
 
