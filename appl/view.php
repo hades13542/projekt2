@@ -2,18 +2,18 @@
 
 class view
 {
-	
+
     protected $_file;
     protected $_data = array();
 
     public function __construct($template)
     {
-        $file = 'templates/'.strtolower($template).'.tpl' ;
-        if ( file_exists($file) )
-         { $this->_file =  $file ; }
-        else{ 
-			throw new Exception("Plik " . $file . " nie istnieje!") ; 
-		}
+        $file = 'templates/' . strtolower($template) . '.tpl';
+        if (file_exists($file)) {
+            $this->_file = $file;
+        } else {
+            throw new Exception("Plik " . $file . " nie istnieje!");
+        }
     }
 
     public function __set($key, $value)
@@ -36,4 +36,5 @@ class view
         return $output;
     }
 }
+
 ?>
