@@ -1,0 +1,104 @@
+body{
+	background: #0795ff;
+}
+
+header{
+	font-size:20px;
+	font-style:italic;
+	text-align:center;
+	color: #23d6ff;
+	text-shadow: 1px 1px 2px #2b68dd;
+	border: 1px solid #000a77;
+	background: #172077;
+	box-shadow:6px 6px 6px -1px #000;
+}
+
+ul {
+	width: 1000px;
+	padding: 0;
+	margin: 0 auto;
+	margin-top:10px;
+	display: table;
+	list-style:none;
+	
+}
+
+li >a{
+display: block;/*powstanie elem blokowego*/
+float: left;
+text-align: center;
+font-size: 1.2em;
+width: auto;
+text-decoration: none;/*usuniete domyslne podkreslenie linku*/
+color: #fff4f6;
+background-color: #2a5777;
+padding: 15px 15px;
+margin: 0px 2px 2px 0px;
+border: 1px solid #1a1d77;
+box-shadow: 0px 2px 3px black;
+}
+
+
+p.start{
+	text-align:center;
+	font-weight:bold;
+}
+
+p.success{
+	text-align:center;
+	font-weight:bold;
+	color:green;
+}
+
+p.failed{
+	text-align:center;
+	font-weight:bold;
+	color:red;
+}
+
+table.tabela{
+	margin: 0 auto;
+}
+
+input.wprowadz{
+	height:2em;
+}
+
+td.text{
+	font-weight:bold;
+}
+
+input.submit,button.submit{
+	text-align:center;
+	font-size:1em;
+	width:auto;
+	color:#B8F;
+	background-color:#707;
+	padding:5px 10px;
+	border:1px solid #707;
+	cursor:pointer;
+}
+
+table.zamowienia{
+	border-collapse: collapse;
+    border-spacing: 0;
+	width:500px;
+	height:auto;
+	margin:0 auto;
+	border:1px solid black;
+}
+
+table.zamowienia tr, table.zamowienia td{
+	border:1px solid black;
+	width:auto;
+}
+
+table.zamowienia tr:nth-child(odd){
+	background-color:#839;
+}
+
+table.zamowienia tr:nth-child(even){
+	background-color:white;
+}
+
+
