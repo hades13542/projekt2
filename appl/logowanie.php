@@ -9,10 +9,9 @@ class logowanie extends controller {
 		
         }
 
-
         function success() {
 				$this->layout=new view('start');
-                $this->layout->content = '<p class="success">Zalogowałeś się do systemu</p>';
+                $this->layout->content = '<p class="success">Pomyślnie zalogowano!</p>';
                 return $this->layout ;
         }
 

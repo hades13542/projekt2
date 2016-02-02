@@ -67,8 +67,6 @@ class start extends controller
             $login = trim($_SESSION['ident']);
             $db = new BazaDanych($login, 1);
             $tablica .= $db->wypisywanie($login);
-
-
         } else {
             $this->layout->content = "<p>Musisz się zalogować</p>";
             return $this->layout;

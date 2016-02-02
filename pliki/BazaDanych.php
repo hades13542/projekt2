@@ -26,9 +26,6 @@ class BazaDanych
     function zapis($nazwa, $ilosc, $wersja)
     {
         $sprawdz = is_numeric($ilosc);
-
-        # $sprawdz&=ctype_alpha($nazwa);
-
         if ($sprawdz) {
             $query = 'INSERT INTO zapis (login,nazwa,ilosc,wersja) VALUES (:login, :nazwa, :ilosc,:wersja);';
             $this->sth = $this->db->prepare($query);
@@ -72,7 +69,6 @@ class BazaDanych
 
     function sprawdzLogin($login)
     {
-
         $query = "SELECT * FROM uzytkownicy WHERE login=" . "'" . $login . "'";
         $this->sth = $this->db->prepare($query);
         $this->sth->execute();
@@ -81,7 +77,6 @@ class BazaDanych
             return false;
         }
         return true;
-
     }
 
     function dodaj($login, $pass, $pass2)
@@ -98,15 +93,12 @@ class BazaDanych
         }
 
         return $sprawdz;
-
     }
 
 
     function __construct($login, $warunek)
     {
-
         $this->dbName = $login;
-
         if ($warunek == 0) {
             $this->db = new PDO ('sqlite:../sql/baza.db');
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

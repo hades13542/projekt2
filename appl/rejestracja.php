@@ -8,14 +8,13 @@ class rejestracja extends controller
     {
         parent::__construct();
         $this->layout = new view('rejestracja');
-
     }
 
 
     function success()
     {
         $this->layout = new view('start');
-        $this->layout->content = '<p class="success">Zostałeś zarejestrowany</p>';
+        $this->layout->content = '<p class="success">Rejstracja przebiegła pomyślnie!</p>';
         return $this->layout;
     }
 
