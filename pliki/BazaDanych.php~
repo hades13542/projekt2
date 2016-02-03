@@ -93,6 +93,7 @@ class BazaDanych
                 echo $pass;
                 echo $pass2;
                 $sprawdz = $this->sth->execute();
+		
             }
         }
 
