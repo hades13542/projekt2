@@ -16,6 +16,7 @@ class logowanie extends controller {
         }
 
         function failed(){
+                $this->layout=new view('start');
                 $this->layout->content = '<p class="failed">Błędne hasło lub logowanie! Spróbuj ponownie.</p>' ;
                 return $this->layout ;
         }

@@ -10,7 +10,6 @@ class start extends controller
         parent::__construct();
         $this->layout = new view('start');
         $this->layout->css = $this->css;
-        $this->layout->menu = $this->menu;
     }
 
 
