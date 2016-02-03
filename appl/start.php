@@ -15,7 +15,7 @@ class start extends controller
 
     function index()
     {
-        $this->layout->content = '<p class="start">Strona startowa</p>';
+        $this->layout->content = '<p class="start">Strona startowa<br><br><a href="dokumentacja.pdf">Dokumentacja</a></p>';
         return $this->layout;
     }
 

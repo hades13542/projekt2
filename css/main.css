@@ -71,10 +71,10 @@ input.submit,button.submit{
 	text-align:center;
 	font-size:1em;
 	width:auto;
-	color:#B8F;
-	background-color:#707;
+	color: #291eff;
+	background-color: #001177;
 	padding:5px 10px;
-	border:1px solid #707;
+	border:1px solid #1f2b77;
 	cursor:pointer;
 }
 
@@ -93,7 +93,7 @@ table.zamowienia tr, table.zamowienia td{
 }
 
 table.zamowienia tr:nth-child(odd){
-	background-color:#839;
+	background-color: #0795ff;
 }
 
 table.zamowienia tr:nth-child(even){
