@@ -16,19 +16,19 @@ header{
 ul {
 	width: 1000px;
 	padding: 0;
-	margin: 10px auto 0;
+	margin: 10px auto 0 20%;
 	display: table;
 	list-style:none;
 	
 }
 
 li >a{
-display: block;/*powstanie elem blokowego*/
+display: block;
 float: left;
 text-align: center;
 font-size: 1.2em;
 width: auto;
-text-decoration: none;/*usuniete domyslne podkreslenie linku*/
+text-decoration: none;
 color: #fff4f6;
 background-color: #2a5777;
 padding: 15px 15px;
