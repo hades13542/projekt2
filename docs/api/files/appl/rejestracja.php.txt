@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Class rejestracja Obsluguje rejestracje do serwisu, dziedziczy po controller
+ */
+class rejestracja extends controller
+{
+    /**
+     * @var view przechowuje widok
+     */
+    protected $layout;
+
+    /**
+     * rejestracja constructor.
+     */
+    function __construct()
+    {
+        parent::__construct();
+        $this->layout = new view('rejestracja');
+    }
+
+
+    /**
+     * Wypisuje "Rejstracja przebiegła pomyślnie!" po podaniu poprawnych danych do rejestracji
+     * @return view
+     */
+    function success()
+    {
+        $this->layout = new view('start');
+        $this->layout->content = '<p class="success">Rejstracja przebiegła pomyślnie!</p>';
+        return $this->layout;
+    }
+
+    /**
+     * Wypisuje "Nie udało się zarejestrować!" po podaniu poprawnych złych do rejestracji
+     * @return view
+     */
+    function failed()
+    {
+        $this->layout = new view('start');
+        $this->layout->content = '<p class="failed">Nie udało się zarejestrować!</p>';
+        return $this->layout;
+    }
+
+
+}
+
+?>
+

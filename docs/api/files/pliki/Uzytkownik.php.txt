@@ -1,0 +1,96 @@
+<?php
+
+include('BazaDanych.php');
+
+/**
+ * Class Uzytkownik obslugujaca wszystkie zdarzenia zwiazane z uzytkownikiem
+ */
+class Uzytkownik
+{
+    /**
+     * @var string przechowuje identyfikator uzytkownika
+     */
+    private $ident = '';
+    /**
+     * @var bool przechowuje czy uzytkownik przeszedl autoryzacja
+     */
+    private $auth = false;
+    /**
+     * @var string przechowuje login
+     */
+    /**
+     * @var string przechowuje haslo
+     */
+    private $s_user, $s_pass;
+
+
+    /**
+     * Uzytkownik constructor. Rozpoczyna sesje
+     */
+    function __construct()
+    {
+
+        $this->s_user = '';
+        $this->s_pass = '';
+        $this->ident = '';
+        session_start();
+    }
+
+    /**
+     * Fukncja ustawiajaca parametry sesji jesli autoryzacja sie powiodla
+     * @return bool
+     */
+    function ustawSesje()
+    {
+        if ($this->auth == true) {
+            $_SESSION["ident"] = $this->ident;
+            session_set_cookie_params(360, "/", "fis.agh.edu.pl/3hujdus", true, false);
+        }
+        return $this->auth;
+    }
+
+    /**
+     *Funkcja konczaca sesje i wygaszająca ciasteczka
+     */
+    function usunSesje()
+    {
+        if (isset($_SESSION['ident'])) {
+            $_SESSION = array();
+            if (isset($_COOKIE[session_name()])) {
+                setcookie(session_name(), '', time() - 50000, '/');
+            }
+            session_destroy();
+        }
+    }
+
+    /**
+     * Funkcja obslugujaca logowanie i autoryzacje
+     * @param $user
+     * @param $pass
+     */
+    function logowanie($user, $pass)
+    {
+        $this->ident = $user;
+        $dbH = new BazaDanych($user, 0);
+        $this->auth = $dbH->sprawdz($user, $pass);
+    }
+
+
+    /**
+     * funkcja oblugujaca rejestracje do bazy danych
+     * @param $login
+     * @param $pass
+     * @param $pass2
+     * @return bool
+     */
+    function rejestracja($login, $pass, $pass2)
+    {
+        $dbH = new BazaDanych($login, 0);
+        return $dbH->dodaj($login, $pass, $pass2);
+    }
+
+}
+
+
+?>
+
