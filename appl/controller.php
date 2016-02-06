@@ -1,17 +1,27 @@
 <?php
 
+/**
+ * Class controller
+ */
 abstract class controller
 {
 
+    /**
+     * @var string przechowuje link do CSS
+     */
     protected $css;
-    protected $menu;
 
+    /**
+     * controller constructor.
+     */
     function __construct()
     {
         $this->css = '<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" >';
-        $this->menu = file_get_contents('templates/menu.tpl');
     }
 
+    /**
+     *Funkcja wywolujaca error 404
+     */
     static function http404()
     {
         header('HTTP/1.1 404 Not Found');
@@ -19,6 +29,10 @@ abstract class controller
         exit;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     */
     function __call($name, $arguments)
     {
         self::http404();
