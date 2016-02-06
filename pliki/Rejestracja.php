@@ -11,7 +11,6 @@ if (isset($_POST["submit"])) {
     $usr = new Uzytkownik();
 
     $sprawdz = $usr->rejestracja($_POST["login"], $_POST["haslo"], $_POST["haslo2"]);
-    echo TEST;
     if ($sprawdz) {
         header("Location:../index.php?sub=rejestracja&action=success");
     } else {
