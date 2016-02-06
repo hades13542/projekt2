@@ -1,6 +1,7 @@
-isOffline = false;
+isOffline = false; //Zmienna ustawiajaca tryb offline/online
 interval = null;
 
+//Funkcja sprawdzajaca czy Ilosc jest liczba
 function sprawdz(ilosc) {
 
     var ilosc = document.getElementById('ilosc').value;
@@ -10,13 +11,14 @@ function sprawdz(ilosc) {
     return sprawdzone;
 }
 
-
+//Funkcja wywolywana gdy polaczenie zostanie utracone
 function utracone() {
     console.log("Brak połączenia!");
     isOffline = true;
     zapiszDoLocalStorage();
 }
 
+//Funkcja zapisujaca do lokalnej pamieci i sprawdzajaca polaczenie co 30000ms
 function zapiszDoLocalStorage() {
     if (interval == null) {
         interval = setInterval(sprawdzPolaczenie, 30000);
@@ -30,7 +32,7 @@ function zapiszDoLocalStorage() {
 
 }
 
-
+//Funkcja zapisujaca ktore pobrane sa z local storage
 function zapiszDane() {
     var url = 'index.php?sub=baza&action=zapis';
 
@@ -43,7 +45,7 @@ function zapiszDane() {
     localStorage.clear();
 }
 
-
+//funkcja sprawdzajaca polaczenie
 function sprawdzPolaczenie() {
     var url = 'index.php?sub=connection&action=check';
     var xmlHttpReq = false;
@@ -72,7 +74,7 @@ function sprawdzPolaczenie() {
 
 }
 
-
+//Funkcja pobierajaca dane z formularza zamowien i zapisujaca je
 function wyslij() {
     var nazwa = document.getElementById('nazwa').value;
     var ilosc = document.getElementById('ilosc').value;
@@ -90,6 +92,7 @@ function wyslij() {
     }
 }
 
+//Funkcja obslugujaca XHR
 function przejdz(url, msg) {
     var xmlHttpReq = false;
     var self = this;

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Klasa odpowiedzialna za logowanie nowego uzytkownika, podbierajac dane z metody post oraz wyswietlanie komunikatu zwrotnego
+ * Tworzy nową sesje dla uzytkownika
+ * @param $class_name
+ */
 function __autoload($class_name)
 {
     include($class_name . '.php');

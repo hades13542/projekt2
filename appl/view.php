@@ -1,11 +1,24 @@
 <?php
 
+/**
+ * Class view
+ */
 class view
 {
 
+    /**
+     * @var string
+     */
     protected $_file;
+    /**
+     * @var array
+     */
     protected $_data = array();
 
+    /**
+     * view constructor obsluguje zbieranie plikow .tpl
+     * @param $template
+     */
     public function __construct($template)
     {
         $file = 'templates/' . strtolower($template) . '.tpl';
@@ -16,16 +29,27 @@ class view
         }
     }
 
+    /**
+     * @param $key
+     * @param $value
+     */
     public function __set($key, $value)
     {
         $this->_data[$key] = $value;
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public function __get($key)
     {
         return $this->_data[$key];
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         extract($this->_data);

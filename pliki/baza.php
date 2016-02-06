@@ -1,9 +1,15 @@
 <?php
 include("BazaDanych.php");
 
+/**
+ * Class baza
+ */
 class baza
 {
 
+    /**
+     *Fukcnja zapisująca podane dane z tabelii składania zamówień jeśli zalogowano, jeśli nie zwraca kod 401
+     */
     function zapis()
     {
         $data = $_POST['data'];

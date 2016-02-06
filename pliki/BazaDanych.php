@@ -1,14 +1,34 @@
 <?php
 
+/**
+ * Class BazaDanych obsluguje bazę danych
+ */
 class BazaDanych
 {
 
+    /**
+     * @var string zmienna przechowywujaca adres do bazy danych sqlite
+     */
     private $dsn = 'sqlite:../sql/';
+    /**
+     * @var przechowuje login uzytkownika
+     */
     private $dbName;
+    /**
+     * @var PDO zmiennna przechowywujaca nasza baze
+     */
     protected $db;
+    /**
+     * @var zmienna przechowywujaca zapytania
+     */
     private $sth;
 
 
+    /** Funkcja sprawdzajaca w bazie danych czy uzytkownik o takim loginie i z takim haslem istnieje
+     * @param $login
+     * @param $pass
+     * @return bool
+     */
     function sprawdz($login, $pass)
     {
         $p = 'haslo';
@@ -23,6 +43,13 @@ class BazaDanych
     }
 
 
+    /**
+     * funkcja zapisujaca do bazy danych zamowienie
+     * @param $nazwa
+     * @param $ilosc
+     * @param $wersja
+     * @return string
+     */
     function zapis($nazwa, $ilosc, $wersja)
     {
         $sprawdz = is_numeric($ilosc);
@@ -46,6 +73,11 @@ class BazaDanych
         }
     }
 
+    /**
+     * Funkcja wypisujaca zamowienia danego uzytkownika z bazy
+     * @param $login
+     * @return string
+     */
     function wypisywanie($login)
     {
         $query = "SELECT * FROM zapis WHERE login=" . "'" . $login . "'";
@@ -67,6 +99,11 @@ class BazaDanych
         return $tablica;
     }
 
+    /**
+     * Funkcja sprawdzajaca czy istnieje ktos o podanym loginie
+     * @param $login
+     * @return bool
+     */
     function sprawdzLogin($login)
     {
         $query = "SELECT * FROM uzytkownicy WHERE login=" . "'" . $login . "'";
@@ -79,6 +116,13 @@ class BazaDanych
         return true;
     }
 
+    /**
+     * funkcja dodajaca nowego uzytkownika do bazy danych jesli dane są poprawne
+     * @param $login
+     * @param $pass
+     * @param $pass2
+     * @return bool
+     */
     function dodaj($login, $pass, $pass2)
     {
 
@@ -101,6 +145,11 @@ class BazaDanych
     }
 
 
+    /**
+     * BazaDanych constructor jesli warunek =1 laczymy sie z baza uzytkownikow, jesli 2 laczymy sie z baza zamowien
+     * @param $login
+     * @param $warunek
+     */
     function __construct($login, $warunek)
     {
         $this->dbName = $login;

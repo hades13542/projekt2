@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Klasa odpowiedzialna za rejestracje nowego uzytkownika, podbierajac dane z metody post oraz wyswietlanie komunikatu zwrotnego
+ * @param $class_name
+ */
 function __autoload($class_name)
 {
     include($class_name . '.php');

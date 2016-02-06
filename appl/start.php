@@ -1,10 +1,22 @@
 <?php
 
+/**
+ * Class start obslugująca poczatkowy widok oraz zmianę widoków w zależności od wywołanej opcji z menu
+ */
 class start extends controller
 {
+    /**
+     * @var view przechowuje aktualny widok
+     */
     protected $layout;
+    /**
+     * @var
+     */
     protected $model;
 
+    /**
+     * start constructor inicjalizuje poczatkowy widok oraz dodaje CSS
+     */
     function __construct()
     {
         parent::__construct();
@@ -13,12 +25,19 @@ class start extends controller
     }
 
 
+    /**
+     * @return view
+     */
     function index()
     {
         $this->layout->content = '<p class="start">Strona startowa<br><br><a href="dokumentacja.pdf">Dokumentacja</a></p>';
         return $this->layout;
     }
 
+    /**
+     * Zmienia widok na formularz do logowania
+     * @return view
+     */
     function logowanie()
     {
         if (file_exists('templates/logowanie.tpl')) {
@@ -30,6 +49,10 @@ class start extends controller
         return $this->layout;
     }
 
+    /**
+     * Zmienia widok na formularz do rejestracji
+     * @return view
+     */
     function rejestracja()
     {
         if (file_exists('templates/rejestracja.tpl')) {
@@ -43,6 +66,10 @@ class start extends controller
     }
 
 
+    /**
+     * Zmienia widok na formularz do dodawania zamówien
+     * @return view
+     */
     function zapis()
     {
 
@@ -55,6 +82,10 @@ class start extends controller
         return $this->layout;
     }
 
+    /**
+     * Zmienia widok na tabelę z złożonymi zamowieniami, jeśli zalogowany. Jeśli użytkownik nie jest zalogowany wypisuje komunikat.
+     * @return view
+     */
     function wypisywanie()
     {
 
@@ -78,6 +109,10 @@ class start extends controller
 
     }
 
+    /**
+     * Obsługuje wylogowanie użytkownika
+     * @return view
+     */
     function wyloguj()
     {
         $uzyt = new Uzytkownik();

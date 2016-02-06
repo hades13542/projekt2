@@ -2,13 +2,31 @@
 
 include('BazaDanych.php');
 
+/**
+ * Class Uzytkownik obslugujaca wszystkie zdarzenia zwiazane z uzytkownikiem
+ */
 class Uzytkownik
 {
+    /**
+     * @var string przechowuje identyfikator uzytkownika
+     */
     private $ident = '';
+    /**
+     * @var bool przechowuje czy uzytkownik przeszedl autoryzacja
+     */
     private $auth = false;
+    /**
+     * @var string przechowuje login
+     */
+    /**
+     * @var string przechowuje haslo
+     */
     private $s_user, $s_pass;
 
 
+    /**
+     * Uzytkownik constructor. Rozpoczyna sesje
+     */
     function __construct()
     {
 
@@ -18,6 +36,10 @@ class Uzytkownik
         session_start();
     }
 
+    /**
+     * Fukncja ustawiajaca parametry sesji jesli autoryzacja sie powiodla
+     * @return bool
+     */
     function ustawSesje()
     {
         if ($this->auth == true) {
@@ -27,6 +49,9 @@ class Uzytkownik
         return $this->auth;
     }
 
+    /**
+     *Funkcja konczaca sesje i wygaszająca ciasteczka
+     */
     function usunSesje()
     {
         if (isset($_SESSION['ident'])) {
@@ -38,6 +63,11 @@ class Uzytkownik
         }
     }
 
+    /**
+     * Funkcja obslugujaca logowanie i autoryzacje
+     * @param $user
+     * @param $pass
+     */
     function logowanie($user, $pass)
     {
         $this->ident = $user;
@@ -46,6 +76,13 @@ class Uzytkownik
     }
 
 
+    /**
+     * funkcja oblugujaca rejestracje do bazy danych
+     * @param $login
+     * @param $pass
+     * @param $pass2
+     * @return bool
+     */
     function rejestracja($login, $pass, $pass2)
     {
         $dbH = new BazaDanych($login, 0);

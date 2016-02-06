@@ -1,6 +1,10 @@
 ﻿<?php
 
 try {
+    /**
+     * Inicjalizacja całej aplikacji
+     * @param $class_name
+     */
     function __autoload($class_name)
     {
         if (file_exists($path = 'appl/' . $class_name . '.php')) {
